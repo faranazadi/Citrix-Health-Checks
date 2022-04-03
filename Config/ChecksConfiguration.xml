@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+	<Variables>
+		<Variable>
+			<!-- Comma separated list of Desktop Delivery Controllers to extract information from although the cmdlets must be available from where the script runs from, e.g. where Studio is installed
+				 Only specify one DDC if you have more than one but they share the same SQL database -->
+			<Name>ddcs</Name>
+			<Value>DDC01,DDC02,DDC03,DDC04</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Comma separated list of XenServer hosts to extract information from -->
+			<Name>xenServerList</Name>
+			<Value>123.123.123.123</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Comma separated list of all the Delivery Groups to be checked and be included in the summary report -->
+			<Name>deliveryGroupsToCheck</Name>
+			<Value>DG1,DG2</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Comma separated list of file shares to report on capacity for -->
+			<Name>UNCs</Name>
+			<Value>\\FILESHARE01\Folder,\\FILESHARE02\Folder\</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Regular expression to match against machine names to exlude from the report -->
+			<Name>excludedMachines</Name>
+			<Value>^$</Value>
+			<Type>[string]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Sessions which have been disconnected longer than this will be reported. Specify a value of 0 to not report on these. -->
+			<Name>disconnectedMinutes</Name>
+			<Value>7200</Value> <!-- 5 days -->
+			<Type>[int]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Machines last rebooted more than this number of days ago will be reported on. -->
+			<Name>lastRebootedDaysAgo</Name>
+			<Value>7</Value>
+			<Type>[int]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Specified how many items will be included where the top n items are displayed, e.g. servers with the most number of sessions -->
+			<Name>topCount</Name>
+			<Value>5</Value>
+			<Type>[int]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Comma separated list of tag names to exlude from the report -->
+			<Name>excludedTags</Name>
+			<Value></Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Some of the Citrix cmdlets by default only return 250 records, although this will produce a warning -->
+			<Name>maxRecords</Name>
+			<Value>2000</Value>
+			<Type>[int]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- How long (in seconds) to wait for a remote machine to return its boot time before aborting the command -->
+			<Name>jobTimeout</Name>
+			<Value>30</Value>
+			<Type>[int]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Comma separated list of the PowerShell snap-ins required by the script -->
+			<Name>snapins</Name>
+			<Value>Citrix*</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Comma separated list of the modules required by the script, add '$env:ProgramFiles\Citrix\Provisioning Services Console\Citrix.PVS.SnapIn.dll,' if using PVS -->
+			<Name>modules</Name>
+			<Value>AdditionalFunctions.psm1</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<Name>deliveryGroupStats</Name>
+			<Value>@()</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<Name>possiblyOverdueReboot</Name>
+			<Value>@()</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- A list of machines that are powered on BUT unregistered -->
+			<Name>poweredOnUnregistered</Name>
+			<Value>@()</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<Name>longDisconnectedUsers</Name>
+			<Value>@()</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- -->
+			<Name>highestUsedMachines</Name>
+			<Value>@()</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- -->
+			<Name>highestLoadIndexes</Name>
+			<Value>@()</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- -->
+			<Name>sites</Name>
+			<Value>@()</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- A list containing pscustomobjects for each UNC which stores UNC name, user's free space, total size of UNC and the total free space -->
+			<Name>fileShares</Name>
+			<Value>@()</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- Contains stats such as PublishedName, Enabled, InMaintenanceMode, DesktopsAvailable and more for every delivery group -->
+			<Name>deliveryGroupStatsVDI</Name>
+			<Value>@()</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- The same as above, but subtly different as it's XenApp stats we're after -->
+			<Name>deliveryGroupStatsXenApp</Name>
+			<Value>@()</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- The hostname of the license server we want to grab license usage from -->
+			<Name>licenseServer</Name>
+			<Value>LICSERVER</Value>
+			<Type>[string]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- A comma separated list of all the critical URLs to check for a 200 OK response, e.g. Gateway or StoreFront -->
+			<Name>urlsToCheck</Name>
+			<Value>https://storefront.com/Citrix/StoreWeb/,https://director.com/</Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- A comma separated list of all the critical URLs that came back with a 200 OK response -->
+			<Name>onlineURLs</Name>
+			<Value></Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- A comma separated list of all the critical URLs that didn't come back with a 200 OK response -->
+			<Name>potentiallyOfflineURLs</Name>
+			<Value></Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- The number of concurrent licenses currently checked out/in use -->
+			<Name>noOfConcurrentLicenses</Name>
+			<Value></Value>
+			<Type>[int]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- The number of user/device licenses currently checked out/in use -->
+			<Name>noOfUserDevLicenses</Name>
+			<Value></Value>
+			<Type>[int]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+
+		<!-- START OF EMAIL SETTINGS -->
+		<Variable>
+			<!-- Do we want to automatically send the report that has been generated? May be necessary for someone to double check the report 
+				 generated before manually sending it out to clients. -->
+			<Name>automaticallySendReport</Name>
+			<Value>True</Value>
+			<Type>[bool]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Used as a flag to decrypt the encrypted password that has been stored -->
+			<Name>isUsingSMTPAuth</Name>
+			<Value>False</Value>
+			<Type>[bool]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Name of the SMTP server to use to send summary email -->
+			<Name>mailServer</Name>
+			<Value></Value>
+			<Type>[string]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- The port to use when connecting to the mailserver -->
+			<Name>mailServerPort</Name>
+			<Value></Value>
+			<Type>[string]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- The username required for the mailserver -->
+			<Name>mailServerUser</Name>
+			<Value></Value>
+			<Type>[string]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- If the mail server only allows SMTP connections from specific machines, use this option to proxy the email via that machine -->
+			<Name>proxyMailServer</Name>
+			<Value></Value>
+			<Type>[string]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- The email address which the email will be sent from -->
+			<Name>emailFrom</Name>
+			<Value></Value>
+			<Type>[string]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Comma separated list of email addresses to send the report to -->
+			<Name>emailTo</Name>
+			<Value></Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Comma separated list of email addresses to cc the report to -->
+			<Name>emailCc</Name>
+			<Value></Value>
+			<Type>[array]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- The subject of the email -->
+			<Name>emailSubject</Name>
+			<Value>Citrix Infrastructure Health Checks</Value>
+			<Type>[string]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Text to prepend to the subject of the email -->
+			<Name>emailQualifier</Name>
+			<Value>[Dev]</Value>
+			<Type>[string]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+		<!-- The body of the email report, which gets converted to HTML in the main script before it is sent out -->
+			<Name>emailBody</Name>
+			<Value></Value>
+			<Type>[string]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<Variable>
+			<!-- Specifies whether Send-MailMessage is just sending the Citrix Studio logs, or the terminated sessions too -->
+			<Name>sendMultipleAttachments</Name>
+			<Value>False</Value>
+			<Type>[bool]</Type>
+			<Scope>Script</Scope>
+		</Variable>
+		<!-- END OF EMAIL SETTINGS -->
+	</Variables>
+</Settings>

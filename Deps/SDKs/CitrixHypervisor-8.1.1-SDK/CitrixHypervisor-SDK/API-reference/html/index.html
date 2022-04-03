@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript" src="branding.js"></script>
+		<script type="text/javascript" src="api/index.json"></script>
+		<script type="text/javascript" src="api/releases.json"></script>
+		<script type="text/javascript" src="apidoc.js"></script>
+		<script>
+			make_title();
+			if (cls != "")
+				document.write('<script src="api/', cls, '.json" type="text/JavaScript"><\/script>');
+			if (rel != "") {
+				if (rel == first_release)
+					rels = releases.slice(0, releases.indexOf(first_release) + 1);
+				else
+					rels = [rel];
+				function ld(info) {
+					if (rels.length > 0)
+						load_script('api/' + rels.pop() + '.json', function(){return ld(info.concat(release_info));});
+					else
+						release_info = info;
+				}
+				ld([]);
+			}
+		</script>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body onload="build();">
+		<div id="wrap">
+			<div id="header"></div>
+			<div id="main">
+				<div id="container"><div id="content">
+					<h1 class="title">API Classes</h1>
+					<p>Click on a class to view the associated fields and messages.</p>
+
+					<img src="classes.png" usemap="#graph" border="0" />
+<map id="graph" name="graph">
+<area shape="rect" id="node1" href="?c=host" title="host" alt="" coords="127,186,183,223"/>
+<area shape="poly" id="node19" href="?c=host_metrics" title="host_metrics" alt="" coords="119,174,116,169,108,164,95,159,79,157,62,156,44,157,28,159,15,164,7,169,4,174,7,180,15,185,28,189,44,192,62,193,79,192,95,189,108,185,116,180"/>
+<area shape="poly" id="node18" href="?c=host_cpu" title="host_cpu" alt="" coords="98,243,96,237,90,232,80,228,68,225,55,224,41,225,29,228,19,232,13,237,11,243,13,249,19,254,29,258,41,261,55,261,68,261,80,258,90,254,96,249"/>
+<area shape="rect" id="node2" href="?c=PBD" title="PBD" alt="" coords="108,305,164,342"/>
+<area shape="rect" id="node13" href="?c=PGPU" title="PGPU" alt="" coords="200,229,256,266"/>
+<area shape="rect" id="node9" href="?c=PIF" title="PIF" alt="" coords="233,123,289,160"/>
+<area shape="rect" id="node3" href="?c=SR" title="SR" alt="" coords="146,412,202,449"/>
+<area shape="rect" id="node4" href="?c=VDI" title="VDI" alt="" coords="251,460,306,497"/>
+<area shape="poly" id="node20" href="?c=SM" title="SM" alt="" coords="133,509,132,503,128,498,121,494,114,491,105,490,97,491,89,494,83,498,79,503,77,509,79,515,83,520,89,524,97,527,105,528,114,527,121,524,128,520,132,515"/>
+<area shape="rect" id="node5" href="?c=VBD" title="VBD" alt="" coords="361,440,416,477"/>
+<area shape="rect" id="node6" href="?c=VM" title="VM" alt="" coords="445,352,501,389"/>
+<area shape="rect" id="node7" href="?c=VIF" title="VIF" alt="" coords="428,231,484,268"/>
+<area shape="poly" id="node21" href="?c=VM_metrics" title="VM_metrics" alt="" coords="626,319,623,314,615,308,602,304,586,302,568,301,551,302,535,304,522,308,514,314,511,319,514,325,522,330,535,334,551,337,568,338,586,337,602,334,615,330,623,325"/>
+<area shape="poly" id="node22" href="?c=VM_guest_metrics" title="VM_guest_metrics" alt="" coords="595,468,591,463,580,457,561,453,539,451,514,450,488,451,466,453,448,457,436,463,432,468,436,474,448,479,466,483,488,486,514,487,539,486,561,483,580,479,591,474"/>
+<area shape="poly" id="node23" href="?c=console" title="console" alt="" coords="607,403,605,397,600,392,591,388,580,385,568,384,556,385,545,388,537,392,531,397,530,403,531,409,537,414,545,418,556,421,568,422,580,421,591,418,600,414,605,409"/>
+<area shape="rect" id="node12" href="?c=VGPU" title="VGPU" alt="" coords="371,321,427,358"/>
+<area shape="rect" id="node8" href="?c=network" title="network" alt="" coords="344,150,407,187"/>
+<area shape="poly" id="node24" href="?c=PIF_metrics" title="PIF_metrics" alt="" coords="341,38,338,32,330,27,318,23,303,20,285,19,268,20,253,23,241,27,233,32,230,38,233,43,241,49,253,53,268,55,285,56,303,55,318,53,330,49,338,43"/>
+<area shape="rect" id="node10" href="?c=user" title="user" alt="" coords="24,4,79,41"/>
+<area shape="rect" id="node11" href="?c=session" title="session" alt="" coords="85,85,142,122"/>
+<area shape="rect" id="node14" href="?c=GPU_group" title="GPU_group" alt="" coords="273,272,358,309"/>
+<area shape="poly" id="node15" href="?c=pool" title="pool" alt="" coords="506,126,505,121,501,115,495,111,487,109,478,108,470,109,462,111,456,115,452,121,451,126,452,132,456,137,462,141,470,144,478,145,487,144,495,141,501,137,505,132"/>
+<area shape="poly" id="node16" href="?c=task" title="task" alt="" coords="602,222,600,216,596,211,590,207,583,204,574,203,565,204,558,207,552,211,548,216,546,222,548,228,552,233,558,237,565,240,574,241,583,240,590,237,596,233,600,228"/>
+<area shape="poly" id="node17" href="?c=event" title="event" alt="" coords="608,31,606,25,602,20,595,16,586,13,577,12,567,13,559,16,552,20,548,25,546,31,548,36,552,42,559,46,567,48,577,49,586,48,595,46,602,42,606,36"/>
+</map>
+					<h1>Classes, Fields and Messages</h1>
+					<p>Classes have both <i>fields</i> and <i>messages.</i> Messages are either <i>implicit</i> or <i>explicit</i> where an implicit message is one of:</p>
+					<ul>
+					<li> a constructor (usually called &quot;create&quot;);</li>
+					<li> a destructor (usually called &quot;destroy&quot;);</li>
+					<li> &quot;get_by_name_label&quot;;</li>
+					<li> &quot;get_by_uuid&quot;</li>
+					<li> &quot;get_record&quot;; and</li>
+					<li> &quot;get_all&quot;.</li>
+					</ul>
+					<p>Explicit messages include all the rest, more class-specific messages (e.g. &quot;VM.start&quot;, &quot;VM.clone&quot;)</p>
+					<p>Every field has at least one <i>accessor</i> depending both on its type and whether it is read-only or read-write. Accessors for a field named &quot;X&quot; would be a proper subset of:</p>
+					<ul>
+					<li> set_X: change the value of field X (only if it is read-write);</li>
+					<li> get_X: retrieve the value of field X;</li>
+					<li> add_X: add a new element (only if a field has type set);</li>
+					<li> remove_X: remove an element (only if a field has type set);</li>
+					<li> add_to_X: add a key-value pair (only if a field has type map); and</li>
+					<li> remove_from_X: remove a key (only if a field has type map).</li>
+					</ul>
+				</div></div>
+				<div id="sidebar"></div>
+				<div id="footer"></div>
+			</div>
+		</div>
+	</body>
+</html>
+

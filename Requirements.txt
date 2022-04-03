@@ -1,0 +1,2 @@
+Posh-SSH module - script will install this automatically if executed with admin privileges
+Squid proxy configured, but do not use this for local addresses

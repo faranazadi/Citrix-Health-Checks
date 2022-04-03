@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36FBEF99-707A-46EA-92F7-598BA9D77788}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XenServerPowerShell</RootNamespace>
+    <AssemblyName>XenServerPowerShell</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</StartProgram>
+    <StartArguments>-NoLogo -NoExit -Command "Import-Module '.\XenServerPowerShell.dll'"</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcV2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.CH.dll">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Newtonsoft.Json.CH.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="XenServer">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\XenServer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CommonCmdletFunctions.cs" />
+    <Compile Include="Connect-XenServer.cs" />
+    <Compile Include="ConvertTo-XenRef.cs" />
+    <Compile Include="Disconnect-XenServer.cs" />
+    <Compile Include="Get-XenSession.cs" />
+    <Compile Include="Wait-XenTask.cs" />
+    <Compile Include="XenServerCmdlet.cs" />
+    <Compile Include="XenServerHttpCmdlet.cs" />
+    <Compile Include="Add-XenBond.cs" />
+    <Compile Include="Add-XenCluster.cs" />
+    <Compile Include="Add-XenConsole.cs" />
+    <Compile Include="Add-XenCrashdump.cs" />
+    <Compile Include="Add-XenGPUGroup.cs" />
+    <Compile Include="Add-XenHost.cs" />
+    <Compile Include="Add-XenHostCpu.cs" />
+    <Compile Include="Add-XenHostCrashdump.cs" />
+    <Compile Include="Add-XenHostMetrics.cs" />
+    <Compile Include="Add-XenHostPatch.cs" />
+    <Compile Include="Add-XenNetwork.cs" />
+    <Compile Include="Add-XenPBD.cs" />
+    <Compile Include="Add-XenPCI.cs" />
+    <Compile Include="Add-XenPGPU.cs" />
+    <Compile Include="Add-XenPIF.cs" />
+    <Compile Include="Add-XenPIFMetrics.cs" />
+    <Compile Include="Add-XenPUSB.cs" />
+    <Compile Include="Add-XenPool.cs" />
+    <Compile Include="Add-XenPoolPatch.cs" />
+    <Compile Include="Add-XenPoolUpdate.cs" />
+    <Compile Include="Add-XenSM.cs" />
+    <Compile Include="Add-XenSR.cs" />
+    <Compile Include="Add-XenSecret.cs" />
+    <Compile Include="Add-XenSubject.cs" />
+    <Compile Include="Add-XenTask.cs" />
+    <Compile Include="Add-XenTunnel.cs" />
+    <Compile Include="Add-XenUSBGroup.cs" />
+    <Compile Include="Add-XenUser.cs" />
+    <Compile Include="Add-XenVBD.cs" />
+    <Compile Include="Add-XenVBDMetrics.cs" />
+    <Compile Include="Add-XenVDI.cs" />
+    <Compile Include="Add-XenVGPU.cs" />
+    <Compile Include="Add-XenVIF.cs" />
+    <Compile Include="Add-XenVIFMetrics.cs" />
+    <Compile Include="Add-XenVLAN.cs" />
+    <Compile Include="Add-XenVM.cs" />
+    <Compile Include="Add-XenVMGuestMetrics.cs" />
+    <Compile Include="Add-XenVMMetrics.cs" />
+    <Compile Include="Add-XenVMPP.cs" />
+    <Compile Include="Add-XenVMSS.cs" />
+    <Compile Include="Add-XenVUSB.cs" />
+    <Compile Include="Export-XenMetadata.cs" />
+    <Compile Include="Export-XenRawVdi.cs" />
+    <Compile Include="Export-XenVm.cs" />
+    <Compile Include="Get-XenAuthProperty.cs" />
+    <Compile Include="Get-XenBond.cs" />
+    <Compile Include="Get-XenBondProperty.cs" />
+    <Compile Include="Get-XenCluster.cs" />
+    <Compile Include="Get-XenClusterHost.cs" />
+    <Compile Include="Get-XenClusterHostProperty.cs" />
+    <Compile Include="Get-XenClusterProperty.cs" />
+    <Compile Include="Get-XenConsole.cs" />
+    <Compile Include="Get-XenConsoleProperty.cs" />
+    <Compile Include="Get-XenCrashdump.cs" />
+    <Compile Include="Get-XenCrashdumpProperty.cs" />
+    <Compile Include="Get-XenDRTask.cs" />
+    <Compile Include="Get-XenDRTaskProperty.cs" />
+    <Compile Include="Get-XenFeature.cs" />
+    <Compile Include="Get-XenFeatureProperty.cs" />
+    <Compile Include="Get-XenGPUGroup.cs" />
+    <Compile Include="Get-XenGPUGroupProperty.cs" />
+    <Compile Include="Get-XenHost.cs" />
+    <Compile Include="Get-XenHostCpu.cs" />
+    <Compile Include="Get-XenHostCpuProperty.cs" />
+    <Compile Include="Get-XenHostCrashdump.cs" />
+    <Compile Include="Get-XenHostCrashdumpProperty.cs" />
+    <Compile Include="Get-XenHostMetrics.cs" />
+    <Compile Include="Get-XenHostMetricsProperty.cs" />
+    <Compile Include="Get-XenHostPatch.cs" />
+    <Compile Include="Get-XenHostPatchProperty.cs" />
+    <Compile Include="Get-XenHostProperty.cs" />
+    <Compile Include="Get-XenLVHDProperty.cs" />
+    <Compile Include="Get-XenMessage.cs" />
+    <Compile Include="Get-XenMessageProperty.cs" />
+    <Compile Include="Get-XenNetwork.cs" />
+    <Compile Include="Get-XenNetworkProperty.cs" />
+    <Compile Include="Get-XenNetworkSriov.cs" />
+    <Compile Include="Get-XenNetworkSriovProperty.cs" />
+    <Compile Include="Get-XenPBD.cs" />
+    <Compile Include="Get-XenPBDProperty.cs" />
+    <Compile Include="Get-XenPCI.cs" />
+    <Compile Include="Get-XenPCIProperty.cs" />
+    <Compile Include="Get-XenPGPU.cs" />
+    <Compile Include="Get-XenPGPUProperty.cs" />
+    <Compile Include="Get-XenPIF.cs" />
+    <Compile Include="Get-XenPIFMetrics.cs" />
+    <Compile Include="Get-XenPIFMetricsProperty.cs" />
+    <Compile Include="Get-XenPIFProperty.cs" />
+    <Compile Include="Get-XenPUSB.cs" />
+    <Compile Include="Get-XenPUSBProperty.cs" />
+    <Compile Include="Get-XenPVSCacheStorage.cs" />
+    <Compile Include="Get-XenPVSCacheStorageProperty.cs" />
+    <Compile Include="Get-XenPVSProxy.cs" />
+    <Compile Include="Get-XenPVSProxyProperty.cs" />
+    <Compile Include="Get-XenPVSServer.cs" />
+    <Compile Include="Get-XenPVSServerProperty.cs" />
+    <Compile Include="Get-XenPVSSite.cs" />
+    <Compile Include="Get-XenPVSSiteProperty.cs" />
+    <Compile Include="Get-XenPool.cs" />
+    <Compile Include="Get-XenPoolPatch.cs" />
+    <Compile Include="Get-XenPoolPatchProperty.cs" />
+    <Compile Include="Get-XenPoolProperty.cs" />
+    <Compile Include="Get-XenPoolUpdate.cs" />
+    <Compile Include="Get-XenPoolUpdateProperty.cs" />
+    <Compile Include="Get-XenRole.cs" />
+    <Compile Include="Get-XenRoleProperty.cs" />
+    <Compile Include="Get-XenSDNController.cs" />
+    <Compile Include="Get-XenSDNControllerProperty.cs" />
+    <Compile Include="Get-XenSM.cs" />
+    <Compile Include="Get-XenSMProperty.cs" />
+    <Compile Include="Get-XenSR.cs" />
+    <Compile Include="Get-XenSRProperty.cs" />
+    <Compile Include="Get-XenSecret.cs" />
+    <Compile Include="Get-XenSecretProperty.cs" />
+    <Compile Include="Get-XenSubject.cs" />
+    <Compile Include="Get-XenSubjectProperty.cs" />
+    <Compile Include="Get-XenTask.cs" />
+    <Compile Include="Get-XenTaskProperty.cs" />
+    <Compile Include="Get-XenTunnel.cs" />
+    <Compile Include="Get-XenTunnelProperty.cs" />
+    <Compile Include="Get-XenUSBGroup.cs" />
+    <Compile Include="Get-XenUSBGroupProperty.cs" />
+    <Compile Include="Get-XenUserProperty.cs" />
+    <Compile Include="Get-XenVBD.cs" />
+    <Compile Include="Get-XenVBDMetrics.cs" />
+    <Compile Include="Get-XenVBDMetricsProperty.cs" />
+    <Compile Include="Get-XenVBDProperty.cs" />
+    <Compile Include="Get-XenVDI.cs" />
+    <Compile Include="Get-XenVDIProperty.cs" />
+    <Compile Include="Get-XenVGPU.cs" />
+    <Compile Include="Get-XenVGPUProperty.cs" />
+    <Compile Include="Get-XenVGPUType.cs" />
+    <Compile Include="Get-XenVGPUTypeProperty.cs" />
+    <Compile Include="Get-XenVIF.cs" />
+    <Compile Include="Get-XenVIFMetrics.cs" />
+    <Compile Include="Get-XenVIFMetricsProperty.cs" />
+    <Compile Include="Get-XenVIFProperty.cs" />
+    <Compile Include="Get-XenVLAN.cs" />
+    <Compile Include="Get-XenVLANProperty.cs" />
+    <Compile Include="Get-XenVM.cs" />
+    <Compile Include="Get-XenVMAppliance.cs" />
+    <Compile Include="Get-XenVMApplianceProperty.cs" />
+    <Compile Include="Get-XenVMGuestMetrics.cs" />
+    <Compile Include="Get-XenVMGuestMetricsProperty.cs" />
+    <Compile Include="Get-XenVMMetrics.cs" />
+    <Compile Include="Get-XenVMMetricsProperty.cs" />
+    <Compile Include="Get-XenVMPP.cs" />
+    <Compile Include="Get-XenVMPPProperty.cs" />
+    <Compile Include="Get-XenVMProperty.cs" />
+    <Compile Include="Get-XenVMSS.cs" />
+    <Compile Include="Get-XenVMSSProperty.cs" />
+    <Compile Include="Get-XenVTPMProperty.cs" />
+    <Compile Include="Get-XenVUSB.cs" />
+    <Compile Include="Get-XenVUSBProperty.cs" />
+    <Compile Include="Import-XenMetadata.cs" />
+    <Compile Include="Import-XenRawVdi.cs" />
+    <Compile Include="Import-XenVm.cs" />
+    <Compile Include="Invoke-XenCluster.cs" />
+    <Compile Include="Invoke-XenClusterHost.cs" />
+    <Compile Include="Invoke-XenHost.cs" />
+    <Compile Include="Invoke-XenHostCrashdump.cs" />
+    <Compile Include="Invoke-XenHostPatch.cs" />
+    <Compile Include="Invoke-XenLVHD.cs" />
+    <Compile Include="Invoke-XenNetwork.cs" />
+    <Compile Include="Invoke-XenPBD.cs" />
+    <Compile Include="Invoke-XenPGPU.cs" />
+    <Compile Include="Invoke-XenPIF.cs" />
+    <Compile Include="Invoke-XenPUSB.cs" />
+    <Compile Include="Invoke-XenPVSServer.cs" />
+    <Compile Include="Invoke-XenPVSSite.cs" />
+    <Compile Include="Invoke-XenPool.cs" />
+    <Compile Include="Invoke-XenPoolPatch.cs" />
+    <Compile Include="Invoke-XenPoolUpdate.cs" />
+    <Compile Include="Invoke-XenSDNController.cs" />
+    <Compile Include="Invoke-XenSR.cs" />
+    <Compile Include="Invoke-XenTask.cs" />
+    <Compile Include="Invoke-XenVBD.cs" />
+    <Compile Include="Invoke-XenVDI.cs" />
+    <Compile Include="Invoke-XenVIF.cs" />
+    <Compile Include="Invoke-XenVM.cs" />
+    <Compile Include="Invoke-XenVMAppliance.cs" />
+    <Compile Include="Invoke-XenVMPP.cs" />
+    <Compile Include="Invoke-XenVMSS.cs" />
+    <Compile Include="Invoke-XenVUSB.cs" />
+    <Compile Include="New-XenBond.cs" />
+    <Compile Include="New-XenCluster.cs" />
+    <Compile Include="New-XenClusterHost.cs" />
+    <Compile Include="New-XenConsole.cs" />
+    <Compile Include="New-XenDRTask.cs" />
+    <Compile Include="New-XenGPUGroup.cs" />
+    <Compile Include="New-XenMessage.cs" />
+    <Compile Include="New-XenNetwork.cs" />
+    <Compile Include="New-XenNetworkSriov.cs" />
+    <Compile Include="New-XenPBD.cs" />
+    <Compile Include="New-XenPVSCacheStorage.cs" />
+    <Compile Include="New-XenPVSProxy.cs" />
+    <Compile Include="New-XenSR.cs" />
+    <Compile Include="New-XenSecret.cs" />
+    <Compile Include="New-XenSubject.cs" />
+    <Compile Include="New-XenTask.cs" />
+    <Compile Include="New-XenTunnel.cs" />
+    <Compile Include="New-XenUSBGroup.cs" />
+    <Compile Include="New-XenUser.cs" />
+    <Compile Include="New-XenVBD.cs" />
+    <Compile Include="New-XenVDI.cs" />
+    <Compile Include="New-XenVGPU.cs" />
+    <Compile Include="New-XenVIF.cs" />
+    <Compile Include="New-XenVLAN.cs" />
+    <Compile Include="New-XenVM.cs" />
+    <Compile Include="New-XenVMAppliance.cs" />
+    <Compile Include="New-XenVMPP.cs" />
+    <Compile Include="New-XenVMSS.cs" />
+    <Compile Include="New-XenVTPM.cs" />
+    <Compile Include="New-XenVUSB.cs" />
+    <Compile Include="Receive-XenAuditLog.cs" />
+    <Compile Include="Receive-XenHostBackup.cs" />
+    <Compile Include="Receive-XenHostLogs.cs" />
+    <Compile Include="Receive-XenHostRrd.cs" />
+    <Compile Include="Receive-XenPoolPatch.cs" />
+    <Compile Include="Receive-XenPoolXmlDbSync.cs" />
+    <Compile Include="Receive-XenRrdUpdates.cs" />
+    <Compile Include="Receive-XenServices.cs" />
+    <Compile Include="Receive-XenSrRrd.cs" />
+    <Compile Include="Receive-XenSystemStatus.cs" />
+    <Compile Include="Receive-XenVmRrd.cs" />
+    <Compile Include="Receive-XenVncsnapshot.cs" />
+    <Compile Include="Receive-XenWlbDiagnostics.cs" />
+    <Compile Include="Receive-XenWlbReport.cs" />
+    <Compile Include="Remove-XenBond.cs" />
+    <Compile Include="Remove-XenBondProperty.cs" />
+    <Compile Include="Remove-XenCluster.cs" />
+    <Compile Include="Remove-XenClusterHost.cs" />
+    <Compile Include="Remove-XenClusterProperty.cs" />
+    <Compile Include="Remove-XenConsole.cs" />
+    <Compile Include="Remove-XenConsoleProperty.cs" />
+    <Compile Include="Remove-XenCrashdump.cs" />
+    <Compile Include="Remove-XenCrashdumpProperty.cs" />
+    <Compile Include="Remove-XenDRTask.cs" />
+    <Compile Include="Remove-XenGPUGroup.cs" />
+    <Compile Include="Remove-XenGPUGroupProperty.cs" />
+    <Compile Include="Remove-XenHost.cs" />
+    <Compile Include="Remove-XenHostCpuProperty.cs" />
+    <Compile Include="Remove-XenHostCrashdump.cs" />
+    <Compile Include="Remove-XenHostCrashdumpProperty.cs" />
+    <Compile Include="Remove-XenHostMetricsProperty.cs" />
+    <Compile Include="Remove-XenHostPatch.cs" />
+    <Compile Include="Remove-XenHostPatchProperty.cs" />
+    <Compile Include="Remove-XenHostProperty.cs" />
+    <Compile Include="Remove-XenMessage.cs" />
+    <Compile Include="Remove-XenNetwork.cs" />
+    <Compile Include="Remove-XenNetworkProperty.cs" />
+    <Compile Include="Remove-XenNetworkSriov.cs" />
+    <Compile Include="Remove-XenPBD.cs" />
+    <Compile Include="Remove-XenPBDProperty.cs" />
+    <Compile Include="Remove-XenPCIProperty.cs" />
+    <Compile Include="Remove-XenPGPUProperty.cs" />
+    <Compile Include="Remove-XenPIF.cs" />
+    <Compile Include="Remove-XenPIFMetricsProperty.cs" />
+    <Compile Include="Remove-XenPIFProperty.cs" />
+    <Compile Include="Remove-XenPUSBProperty.cs" />
+    <Compile Include="Remove-XenPVSCacheStorage.cs" />
+    <Compile Include="Remove-XenPVSProxy.cs" />
+    <Compile Include="Remove-XenPoolPatch.cs" />
+    <Compile Include="Remove-XenPoolPatchProperty.cs" />
+    <Compile Include="Remove-XenPoolProperty.cs" />
+    <Compile Include="Remove-XenPoolUpdate.cs" />
+    <Compile Include="Remove-XenPoolUpdateProperty.cs" />
+    <Compile Include="Remove-XenSMProperty.cs" />
+    <Compile Include="Remove-XenSR.cs" />
+    <Compile Include="Remove-XenSRProperty.cs" />
+    <Compile Include="Remove-XenSecret.cs" />
+    <Compile Include="Remove-XenSecretProperty.cs" />
+    <Compile Include="Remove-XenSubject.cs" />
+    <Compile Include="Remove-XenSubjectProperty.cs" />
+    <Compile Include="Remove-XenTask.cs" />
+    <Compile Include="Remove-XenTaskProperty.cs" />
+    <Compile Include="Remove-XenTunnel.cs" />
+    <Compile Include="Remove-XenTunnelProperty.cs" />
+    <Compile Include="Remove-XenUSBGroup.cs" />
+    <Compile Include="Remove-XenUSBGroupProperty.cs" />
+    <Compile Include="Remove-XenUser.cs" />
+    <Compile Include="Remove-XenUserProperty.cs" />
+    <Compile Include="Remove-XenVBD.cs" />
+    <Compile Include="Remove-XenVBDMetricsProperty.cs" />
+    <Compile Include="Remove-XenVBDProperty.cs" />
+    <Compile Include="Remove-XenVDI.cs" />
+    <Compile Include="Remove-XenVDIProperty.cs" />
+    <Compile Include="Remove-XenVGPU.cs" />
+    <Compile Include="Remove-XenVGPUProperty.cs" />
+    <Compile Include="Remove-XenVIF.cs" />
+    <Compile Include="Remove-XenVIFMetricsProperty.cs" />
+    <Compile Include="Remove-XenVIFProperty.cs" />
+    <Compile Include="Remove-XenVLAN.cs" />
+    <Compile Include="Remove-XenVLANProperty.cs" />
+    <Compile Include="Remove-XenVM.cs" />
+    <Compile Include="Remove-XenVMAppliance.cs" />
+    <Compile Include="Remove-XenVMGuestMetricsProperty.cs" />
+    <Compile Include="Remove-XenVMMetricsProperty.cs" />
+    <Compile Include="Remove-XenVMPP.cs" />
+    <Compile Include="Remove-XenVMPPProperty.cs" />
+    <Compile Include="Remove-XenVMProperty.cs" />
+    <Compile Include="Remove-XenVMSS.cs" />
+    <Compile Include="Remove-XenVMSSProperty.cs" />
+    <Compile Include="Remove-XenVTPM.cs" />
+    <Compile Include="Remove-XenVUSB.cs" />
+    <Compile Include="Remove-XenVUSBProperty.cs" />
+    <Compile Include="Send-XenBlob.cs" />
+    <Compile Include="Send-XenHostRestore.cs" />
+    <Compile Include="Send-XenOemPatchStream.cs" />
+    <Compile Include="Send-XenPoolPatch.cs" />
+    <Compile Include="Set-XenBond.cs" />
+    <Compile Include="Set-XenCluster.cs" />
+    <Compile Include="Set-XenConsole.cs" />
+    <Compile Include="Set-XenCrashdump.cs" />
+    <Compile Include="Set-XenGPUGroup.cs" />
+    <Compile Include="Set-XenHost.cs" />
+    <Compile Include="Set-XenHostCpu.cs" />
+    <Compile Include="Set-XenHostCrashdump.cs" />
+    <Compile Include="Set-XenHostMetrics.cs" />
+    <Compile Include="Set-XenHostPatch.cs" />
+    <Compile Include="Set-XenNetwork.cs" />
+    <Compile Include="Set-XenPBD.cs" />
+    <Compile Include="Set-XenPCI.cs" />
+    <Compile Include="Set-XenPGPU.cs" />
+    <Compile Include="Set-XenPIF.cs" />
+    <Compile Include="Set-XenPIFMetrics.cs" />
+    <Compile Include="Set-XenPUSB.cs" />
+    <Compile Include="Set-XenPVSSite.cs" />
+    <Compile Include="Set-XenPool.cs" />
+    <Compile Include="Set-XenPoolPatch.cs" />
+    <Compile Include="Set-XenPoolUpdate.cs" />
+    <Compile Include="Set-XenSM.cs" />
+    <Compile Include="Set-XenSR.cs" />
+    <Compile Include="Set-XenSecret.cs" />
+    <Compile Include="Set-XenTask.cs" />
+    <Compile Include="Set-XenTunnel.cs" />
+    <Compile Include="Set-XenUSBGroup.cs" />
+    <Compile Include="Set-XenUser.cs" />
+    <Compile Include="Set-XenVBD.cs" />
+    <Compile Include="Set-XenVBDMetrics.cs" />
+    <Compile Include="Set-XenVDI.cs" />
+    <Compile Include="Set-XenVGPU.cs" />
+    <Compile Include="Set-XenVIF.cs" />
+    <Compile Include="Set-XenVIFMetrics.cs" />
+    <Compile Include="Set-XenVLAN.cs" />
+    <Compile Include="Set-XenVM.cs" />
+    <Compile Include="Set-XenVMAppliance.cs" />
+    <Compile Include="Set-XenVMGuestMetrics.cs" />
+    <Compile Include="Set-XenVMMetrics.cs" />
+    <Compile Include="Set-XenVMPP.cs" />
+    <Compile Include="Set-XenVMSS.cs" />
+    <Compile Include="Set-XenVUSB.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
